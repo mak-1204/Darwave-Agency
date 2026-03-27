@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://darkwave-digital-marketing.vercel.app/sitemap.xml
