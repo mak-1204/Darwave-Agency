@@ -1,921 +1,1628 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Darkwave — Digital Marketing Agency</title>
-<link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96">
-<link rel="icon" type="image/svg+xml" href="favicon/favicon.svg">
-<link rel="shortcut icon" href="favicon/favicon.ico">
-<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-<link rel="manifest" href="favicon/site.webmanifest">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #080808;
-    --bg2: #0f0f0f;
-    --bg3: #141414;
-    --text: #f0f0f0;
-    --muted: #888;
-    --border: rgba(255,255,255,0.08);
-    --accent-pink: #e040fb;
-    --accent-blue: #5c6fff;
-    --accent-purple: #a855f7;
-    --gradient: linear-gradient(135deg, #8b3cf7, #e040fb, #5c6fff);
-    --gradient2: linear-gradient(135deg, #5c6fff, #e040fb);
-    --font-head: 'Syne', sans-serif;
-    --font-body: 'DM Sans', sans-serif;
-    --nav-bg: rgba(8,8,8,0.8);
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Darkwave — Digital Marketing Agency</title>
+  <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg">
+  <link rel="shortcut icon" href="favicon/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080808;
+      --bg2: #0f0f0f;
+      --bg3: #141414;
+      --text: #f0f0f0;
+      --muted: #888;
+      --border: rgba(255, 255, 255, 0.08);
+      --accent-pink: #e040fb;
+      --accent-blue: #5c6fff;
+      --accent-purple: #a855f7;
+      --gradient: linear-gradient(135deg, #8b3cf7, #e040fb, #5c6fff);
+      --gradient2: linear-gradient(135deg, #5c6fff, #e040fb);
+      --font-head: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --nav-bg: rgba(8, 8, 8, 0.8);
+    }
 
-  [data-theme="light"] {
-    --bg: #ffffff;
-    --bg2: #f5f5f5;
-    --bg3: #ffffff;
-    --text: #111111;
-    --muted: #666666;
-    --border: rgba(0,0,0,0.1);
-    --nav-bg: rgba(255,255,255,0.85);
-  }
+    [data-theme="light"] {
+      --bg: #ffffff;
+      --bg2: #f5f5f5;
+      --bg3: #ffffff;
+      --text: #111111;
+      --muted: #666666;
+      --border: rgba(0, 0, 0, 0.1);
+      --nav-bg: rgba(255, 255, 255, 0.85);
+    }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font-body);
-    font-size: 17px;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 20px 5%;
-    backdrop-filter: blur(20px);
-    background: var(--nav-bg);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-logo {
-    display: flex; align-items: center; gap: 12px;
-    font-family: var(--font-head); font-weight: 700; font-size: 22px;
-    text-decoration: none; color: var(--text);
-  }
-  .nav-logo img { width: 38px; height: 38px; border-radius: 50%; }
-  .nav-links { display: flex; gap: 36px; list-style: none; }
-  .nav-links a {
-    text-decoration: none; color: var(--muted); font-size: 15px;
-    transition: color .2s;
-  }
-  .nav-links a:hover { color: var(--text); }
-  .nav-cta {
-    background: var(--gradient);
-    color: #fff; border: none; padding: 11px 24px;
-    border-radius: 100px; font-family: var(--font-body);
-    font-size: 15px; font-weight: 500; cursor: pointer;
-    transition: opacity .2s, transform .2s;
-    text-decoration: none;
-  }
-  .nav-cta:hover { opacity: .85; transform: translateY(-1px); }
-  .btn-theme {
-    background: transparent; color: var(--text); display: flex; align-items: center; justify-content: center;
-    border: 1px solid var(--border); border-radius: 50%; width: 42px; height: 42px;
-    font-size: 16px; cursor: pointer; transition: border-color .2s, transform .2s;
-  }
-  .btn-theme:hover { border-color: var(--muted); transform: scale(1.05); }
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 5%;
+      backdrop-filter: blur(20px);
+      background: var(--nav-bg);
+      border-bottom: 1px solid var(--border);
+    }
 
-  /* ── CONTACT MODAL ── */
-  .modal-overlay {
-    position: fixed; inset: 0; z-index: 999;
-    background: rgba(0,0,0,0.85); backdrop-filter: blur(10px);
-    display: flex; align-items: center; justify-content: center;
-    opacity: 0; pointer-events: none; transition: opacity .35s;
-  }
-  .modal-overlay.open { opacity: 1; pointer-events: all; }
-  .modal {
-    background: var(--bg3); border: 1px solid var(--border);
-    border-radius: 20px; padding: 48px; max-width: 520px; width: 90%;
-    position: relative; transform: translateY(30px);
-    transition: transform .35s;
-  }
-  .modal-overlay.open .modal { transform: translateY(0); }
-  .modal h2 { font-family: var(--font-head); font-size: 28px; margin-bottom: 6px; }
-  .modal p { color: var(--muted); margin-bottom: 28px; }
-  .modal-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 24px; }
-  .modal-logo img { width: 32px; border-radius: 50%; }
-  .modal-logo span { font-family: var(--font-head); font-weight: 700; font-size: 18px; }
-  .form-group { margin-bottom: 16px; }
-  .form-group label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
-  .form-group select, .form-group input {
-    width: 100%; background: var(--bg2); border: 1px solid var(--border);
-    color: var(--text); padding: 12px 16px; border-radius: 10px;
-    font-family: var(--font-body); font-size: 15px; outline: none;
-    appearance: none;
-  }
-  .form-group select:focus, .form-group input:focus { border-color: var(--accent-purple); }
-  .services-checkboxes { display: flex; flex-direction: column; gap: 10px; }
-  .services-checkboxes label {
-    display: flex; align-items: center; gap: 10px;
-    font-size: 15px; color: var(--text); cursor: pointer;
-  }
-  .services-checkboxes input[type=checkbox] {
-    width: 18px; height: 18px; flex-shrink: 0;
-    appearance: auto; -webkit-appearance: auto;
-    accent-color: var(--accent-purple);
-    background: transparent; border: none;
-    padding: 0; cursor: pointer;
-  }
-  .modal-submit {
-    width: 100%; margin-top: 24px;
-    background: var(--gradient); color: #fff;
-    border: none; padding: 14px; border-radius: 100px;
-    font-size: 16px; font-weight: 600; cursor: pointer;
-    font-family: var(--font-body); transition: opacity .2s;
-  }
-  .modal-submit:hover { opacity: .85; }
-  .modal-close {
-    position: absolute; top: 20px; right: 20px;
-    background: none; border: none; color: var(--muted);
-    font-size: 24px; cursor: pointer; line-height: 1;
-  }
-  .modal-success { text-align: center; padding: 20px 0; }
-  .modal-success .check { font-size: 48px; margin-bottom: 16px; }
-  .modal-success h3 { font-family: var(--font-head); font-size: 24px; margin-bottom: 8px; }
-  .modal-success p { color: var(--muted); }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 22px;
+      text-decoration: none;
+      color: var(--text);
+    }
 
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    text-align: center;
-    padding: 140px 5% 80px;
-    position: relative; overflow: hidden;
-  }
-  .hero-bg {
-    position: absolute; inset: 0; z-index: 0;
-    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(168,85,247,0.12) 0%, transparent 70%),
-                radial-gradient(ellipse 60% 40% at 20% 80%, rgba(92,111,255,0.08) 0%, transparent 60%),
-                radial-gradient(ellipse 50% 40% at 80% 70%, rgba(224,64,251,0.06) 0%, transparent 60%);
-  }
-  .hero-noise {
-    position: absolute; inset: 0; z-index: 0; opacity: 0.025;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    background-size: 200px;
-  }
-  .hero-content { position: relative; z-index: 1; max-width: 900px; }
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    border: 1px solid var(--border); background: rgba(255,255,255,0.04);
-    border-radius: 100px; padding: 7px 18px; font-size: 13px;
-    color: var(--muted); margin-bottom: 32px;
-    animation: fadeUp .7s ease both;
-  }
-  .hero-badge span { width: 6px; height: 6px; border-radius: 50%; background: var(--gradient); display: inline-block; }
-  .hero h1 {
-    font-family: var(--font-head);
-    font-size: clamp(42px, 7vw, 88px);
-    font-weight: 800; line-height: 1.05;
-    letter-spacing: -2px;
-    animation: fadeUp .7s .1s ease both;
-  }
-  .hero h1 .grad {
-    background: var(--gradient);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .hero-sub {
-    font-size: clamp(17px, 2.2vw, 22px);
-    color: var(--muted); max-width: 640px; margin: 24px auto 40px;
-    font-weight: 300; line-height: 1.65;
-    animation: fadeUp .7s .2s ease both;
-  }
-  .hero-actions {
-    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
-    animation: fadeUp .7s .3s ease both;
-  }
-  .btn-primary {
-    background: var(--gradient); color: #fff;
-    border: none; padding: 16px 36px;
-    border-radius: 100px; font-size: 16px; font-weight: 500;
-    cursor: pointer; font-family: var(--font-body);
-    transition: transform .2s, opacity .2s;
-    text-decoration: none;
-  }
-  .btn-primary:hover { transform: translateY(-2px); opacity: .85; }
-  .btn-ghost {
-    background: transparent; color: var(--text);
-    border: 1px solid var(--border); padding: 16px 36px;
-    border-radius: 100px; font-size: 16px; font-weight: 500;
-    cursor: pointer; font-family: var(--font-body);
-    transition: border-color .2s, transform .2s;
-    text-decoration: none;
-  }
-  .btn-ghost:hover { border-color: rgba(255,255,255,0.3); transform: translateY(-2px); }
+    .nav-logo img {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+    }
 
-  /* ── MARQUEE ── */
-  .marquee-section { padding: 48px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); overflow: hidden; }
-  .marquee-track {
-    display: flex; gap: 64px; width: max-content;
-    animation: marquee 22s linear infinite;
-  }
-  .marquee-item {
-    display: flex; align-items: center; gap: 10px;
-    font-family: var(--font-head); font-size: 20px; font-weight: 600;
-    color: var(--muted); white-space: nowrap;
-  }
-  .marquee-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gradient); flex-shrink: 0; }
-  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
 
-  /* ── SECTIONS ── */
-  section { padding: 100px 5%; }
-  .container { max-width: 1100px; margin: 0 auto; }
-  .section-label {
-    font-size: 13px; font-weight: 500; letter-spacing: 2px;
-    text-transform: uppercase; color: var(--accent-purple);
-    margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
-  }
-  .section-label::before { content: ''; width: 24px; height: 1px; background: var(--accent-purple); }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 15px;
+      transition: color .2s;
+    }
 
-  /* ── PROBLEM SECTION ── */
-  .problem { background: var(--bg); }
-  .problem-text h2 {
-    font-family: var(--font-head); font-size: clamp(28px, 4vw, 52px);
-    font-weight: 700; line-height: 1.2; max-width: 750px;
-  }
-  .problem-text h2 .strike { color: var(--muted); position: relative; display: inline; }
-  .problem-text h2 .strike::after {
-    content: ''; position: absolute; left: 0; top: 50%;
-    width: 100%; height: 2px; background: var(--muted); transform: translateY(-50%);
-  }
-  .problem-lead {
-    font-size: clamp(18px, 2.5vw, 28px); color: var(--muted);
-    font-weight: 300; line-height: 1.5; margin-top: 16px; margin-bottom: 32px;
-  }
-  .problem-reveal {
-    font-family: var(--font-head); font-size: clamp(22px, 3.5vw, 42px);
-    font-weight: 700;
-    background: var(--gradient2); -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; background-clip: text;
-  }
+    .nav-links a:hover {
+      color: var(--text);
+    }
 
-  /* ── SERVICES (3-step) ── */
-  .services-steps { display: flex; flex-direction: column; gap: 0; }
-  .step-item {
-    display: grid; grid-template-columns: 80px 1fr;
-    gap: 32px; padding: 48px 0;
-    border-bottom: 1px solid var(--border);
-    cursor: pointer; transition: background .2s;
-    text-decoration: none; color: inherit;
-  }
-  .step-item:hover .step-arrow { opacity: 1; transform: translateX(0); }
-  .step-num {
-    font-family: var(--font-head); font-size: 15px; color: var(--muted);
-    font-weight: 600; padding-top: 6px;
-  }
-  .step-body { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
-  .step-text h3 {
-    font-family: var(--font-head); font-size: 32px; font-weight: 700;
-    margin-bottom: 16px;
-  }
-  .step-text p { color: var(--muted); max-width: 520px; font-size: 16px; }
-  .step-arrow {
-    font-size: 28px; color: var(--accent-purple);
-    opacity: 0; transform: translateX(-10px);
-    transition: all .25s; flex-shrink: 0; margin-top: 4px;
-  }
+    .nav-cta {
+      background: var(--gradient);
+      color: #fff;
+      border: none;
+      padding: 11px 24px;
+      border-radius: 100px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: opacity .2s, transform .2s;
+      text-decoration: none;
+    }
 
-  /* ── TESTIMONIALS ── */
-  .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  .testimonial-card {
-    background: var(--bg3); border: 1px solid var(--border);
-    border-radius: 16px; padding: 32px;
-    transition: border-color .2s, transform .2s;
-  }
-  .testimonial-card:hover { border-color: rgba(168,85,247,0.3); transform: translateY(-3px); }
-  .site-preview {
-    width: 100%; border-radius: 10px; overflow: hidden;
-    border: 1px solid var(--border); margin-bottom: 20px;
-    position: relative; height: 180px; background: #111;
-    display: block; cursor: pointer; text-decoration: none;
-    transition: border-color .2s;
-  }
-  .site-preview:hover { border-color: rgba(168,85,247,0.5); }
-  .site-preview iframe {
-    position: absolute; top: 0; left: 0;
-    width: 960px; height: 700px;
-    transform: scale(0.5); transform-origin: top left;
-    border: none; pointer-events: none;
-  }
-  .site-preview-label {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-    padding: 8px 12px; font-size: 11px; color: var(--muted);
-    font-family: var(--font-body);
-  }
-  .testimonial-card blockquote { font-size: 16px; line-height: 1.65; color: var(--text); margin-bottom: 20px; font-style: italic; }
-  .testimonial-author { color: var(--muted); font-size: 14px; display: flex; flex-direction: column; gap: 6px; }
-  .testimonial-author strong { color: var(--text); display: block; }
-  .testimonial-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
-  .t-tag {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.5px;
-    text-transform: uppercase; color: var(--accent-purple);
-    background: rgba(168,85,247,0.1); border: 1px solid rgba(168,85,247,0.2);
-    border-radius: 100px; padding: 4px 12px;
-  }
-  .testimonial-link {
-    color: var(--accent-blue); font-size: 13px; text-decoration: none;
-    transition: color .2s; display: inline-block;
-  }
-  .testimonial-link:hover { color: var(--accent-pink); }
+    .nav-cta:hover {
+      opacity: .85;
+      transform: translateY(-1px);
+    }
 
-  /* ── STATS ── */
-  .stats-row {
-    display: grid; grid-template-columns: repeat(5, 1fr);
-    gap: 0; border: 1px solid var(--border); border-radius: 20px;
-    overflow: hidden; background: var(--bg3);
-  }
-  .stat-item {
-    padding: 36px 24px; text-align: center;
-    border-right: 1px solid var(--border);
-  }
-  .stat-item:last-child { border-right: none; }
-  .stat-num {
-    font-family: var(--font-head); font-size: 36px; font-weight: 800;
-    background: var(--gradient); -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; background-clip: text;
-    display: block; line-height: 1.1; margin-bottom: 6px;
-  }
-  .stat-label { font-size: 13px; color: var(--muted); line-height: 1.4; }
+    .btn-theme {
+      background: transparent;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      width: 42px;
+      height: 42px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: border-color .2s, transform .2s;
+    }
 
-  /* ── SERVICES CARDS ── */
-  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .service-card {
-    background: var(--bg3); border: 1px solid var(--border);
-    border-radius: 16px; padding: 32px;
-    transition: border-color .25s, transform .25s;
-  }
-  .service-card:hover { border-color: rgba(168,85,247,0.35); transform: translateY(-4px); }
-  .service-icon {
-    width: 48px; height: 48px; border-radius: 12px;
-    background: var(--gradient); display: flex; align-items: center;
-    justify-content: center; font-size: 22px; margin-bottom: 20px;
-  }
-  .service-card h3 { font-family: var(--font-head); font-size: 20px; font-weight: 700; margin-bottom: 12px; }
-  .service-card p { color: var(--muted); font-size: 15px; line-height: 1.6; }
+    .btn-theme:hover {
+      border-color: var(--muted);
+      transform: scale(1.05);
+    }
 
-  /* ── FAQs ── */
-  .faq-list { display: flex; flex-direction: column; gap: 0; }
-  .faq-item {
-    border-bottom: 1px solid var(--border);
-    overflow: hidden;
-  }
-  .faq-q {
-    width: 100%; text-align: left; background: none; border: none;
-    color: var(--text); font-family: var(--font-head); font-size: 18px;
-    font-weight: 600; padding: 28px 0; cursor: pointer;
-    display: flex; justify-content: space-between; align-items: center; gap: 16px;
-    transition: color .2s;
-  }
-  .faq-q:hover { color: var(--accent-purple); }
-  .faq-q .faq-icon { font-size: 22px; transition: transform .3s; flex-shrink: 0; color: var(--muted); }
-  .faq-item.open .faq-icon { transform: rotate(45deg); }
-  .faq-a {
-    color: var(--muted); font-size: 16px; line-height: 1.7;
-    max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .3s;
-    padding-bottom: 0;
-  }
-  .faq-item.open .faq-a { max-height: 400px; padding-bottom: 28px; }
+    /* ── CONTACT MODAL ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .35s;
+    }
 
-  /* ── CTA SECTION ── */
-  .cta-section {
-    background: var(--bg3); border-top: 1px solid var(--border);
-    text-align: center; position: relative; overflow: hidden;
-  }
-  .cta-glow {
-    position: absolute; width: 600px; height: 600px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(168,85,247,0.15) 0%, transparent 70%);
-    top: 50%; left: 50%; transform: translate(-50%, -50%);
-    pointer-events: none;
-  }
-  .cta-section h2 {
-    font-family: var(--font-head); font-size: clamp(32px, 5vw, 64px);
-    font-weight: 800; line-height: 1.1; position: relative;
-    margin-bottom: 24px;
-  }
-  .cta-section p { color: var(--muted); font-size: 18px; margin-bottom: 40px; position: relative; }
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
 
-  /* ── FOOTER ── */
-  footer {
-    background: var(--bg); border-top: 1px solid var(--border);
-    padding: 64px 5% 40px;
-  }
-  .footer-grid {
-    display: grid; grid-template-columns: 2fr 1fr 1fr;
-    gap: 48px; margin-bottom: 48px;
-  }
-  .footer-brand .logo { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
-  .footer-brand .logo img { width: 32px; border-radius: 50%; }
-  .footer-brand .logo span { font-family: var(--font-head); font-weight: 700; font-size: 18px; }
-  .footer-brand p { color: var(--muted); font-size: 15px; line-height: 1.6; max-width: 260px; }
-  .footer-col h4 { font-family: var(--font-head); font-weight: 700; font-size: 15px; margin-bottom: 20px; }
-  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-  .footer-col ul li a { text-decoration: none; color: var(--muted); font-size: 15px; transition: color .2s; }
-  .footer-col ul li a:hover { color: var(--text); }
-  .footer-bottom {
-    border-top: 1px solid var(--border); padding-top: 32px;
-    display: flex; justify-content: space-between; align-items: center;
-    color: var(--muted); font-size: 14px;
-  }
+    .modal {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 48px;
+      max-width: 520px;
+      width: 90%;
+      position: relative;
+      transform: translateY(30px);
+      transition: transform .35s;
+    }
 
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .reveal {
-    opacity: 0; transform: translateY(32px);
-    transition: opacity .7s ease, transform .7s ease;
-  }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
+    .modal-overlay.open .modal {
+      transform: translateY(0);
+    }
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 1024px) {
-    .services-grid { grid-template-columns: repeat(2, 1fr); }
-    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-    .hero h1 { font-size: clamp(38px, 6vw, 64px); }
-    section { padding: 80px 5%; }
-  }
+    .modal h2 {
+      font-family: var(--font-head);
+      font-size: 28px;
+      margin-bottom: 6px;
+    }
 
-  @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .testimonials-grid { grid-template-columns: 1fr; }
-    .services-grid { grid-template-columns: 1fr; }
-    .footer-grid { grid-template-columns: 1fr; }
-    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
-    .step-item { grid-template-columns: 48px 1fr; gap: 16px; }
-    .hero { min-height: 80vh; padding: 120px 5% 60px; }
-    .site-preview iframe { transform: scale(0.35); }
-    .modal { padding: 32px 24px; }
-    section { padding: 60px 5%; }
-  }
-  
-  @media (max-width: 480px) {
-    .hero-actions { flex-direction: column; width: 100%; }
-    .btn-primary, .btn-ghost { width: 100%; text-align: center; }
-    .step-text h3 { font-size: 24px; }
-    .site-preview iframe { transform: scale(0.3); }
-    .site-preview { height: 160px; }
-  }
-</style>
+    .modal p {
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .modal-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .modal-logo img {
+      width: 32px;
+      border-radius: 50%;
+    }
+
+    .modal-logo span {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .form-group select,
+    .form-group input {
+      width: 100%;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      outline: none;
+      appearance: none;
+    }
+
+    .form-group select:focus,
+    .form-group input:focus {
+      border-color: var(--accent-purple);
+    }
+
+    .services-checkboxes {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .services-checkboxes label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .services-checkboxes input[type=checkbox] {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      appearance: auto;
+      -webkit-appearance: auto;
+      accent-color: var(--accent-purple);
+      background: transparent;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    .modal-submit {
+      width: 100%;
+      margin-top: 24px;
+      background: var(--gradient);
+      color: #fff;
+      border: none;
+      padding: 14px;
+      border-radius: 100px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: var(--font-body);
+      transition: opacity .2s;
+    }
+
+    .modal-submit:hover {
+      opacity: .85;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 24px;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .modal-success {
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .modal-success .check {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .modal-success h3 {
+      font-family: var(--font-head);
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .modal-success p {
+      color: var(--muted);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 5% 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(168, 85, 247, 0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 20% 80%, rgba(92, 111, 255, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 80% 70%, rgba(224, 64, 251, 0.06) 0%, transparent 60%);
+    }
+
+    .hero-noise {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 200px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 100px;
+      padding: 7px 18px;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 32px;
+      animation: fadeUp .7s ease both;
+    }
+
+    .hero-badge span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gradient);
+      display: inline-block;
+    }
+
+    .hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(42px, 7vw, 88px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      animation: fadeUp .7s .1s ease both;
+    }
+
+    .hero h1 .grad {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(17px, 2.2vw, 22px);
+      color: var(--muted);
+      max-width: 640px;
+      margin: 24px auto 40px;
+      font-weight: 300;
+      line-height: 1.65;
+      animation: fadeUp .7s .2s ease both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeUp .7s .3s ease both;
+    }
+
+    .btn-primary {
+      background: var(--gradient);
+      color: #fff;
+      border: none;
+      padding: 16px 36px;
+      border-radius: 100px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: var(--font-body);
+      transition: transform .2s, opacity .2s;
+      text-decoration: none;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      opacity: .85;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 16px 36px;
+      border-radius: 100px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: var(--font-body);
+      transition: border-color .2s, transform .2s;
+      text-decoration: none;
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-section {
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 64px;
+      width: max-content;
+      animation: marquee 22s linear infinite;
+    }
+
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-head);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .marquee-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gradient);
+      flex-shrink: 0;
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 100px 5%;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent-purple);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--accent-purple);
+    }
+
+    /* ── PROBLEM SECTION ── */
+    .problem {
+      background: var(--bg);
+    }
+
+    .problem-text h2 {
+      font-family: var(--font-head);
+      font-size: clamp(28px, 4vw, 52px);
+      font-weight: 700;
+      line-height: 1.2;
+      max-width: 750px;
+    }
+
+    .problem-text h2 .strike {
+      color: var(--muted);
+      position: relative;
+      display: inline;
+    }
+
+    .problem-text h2 .strike::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 100%;
+      height: 2px;
+      background: var(--muted);
+      transform: translateY(-50%);
+    }
+
+    .problem-lead {
+      font-size: clamp(18px, 2.5vw, 28px);
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.5;
+      margin-top: 16px;
+      margin-bottom: 32px;
+    }
+
+    .problem-reveal {
+      font-family: var(--font-head);
+      font-size: clamp(22px, 3.5vw, 42px);
+      font-weight: 700;
+      background: var(--gradient2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── SERVICES (3-step) ── */
+    .services-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .step-item {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 32px;
+      padding: 48px 0;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: background .2s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .step-item:hover .step-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .step-num {
+      font-family: var(--font-head);
+      font-size: 15px;
+      color: var(--muted);
+      font-weight: 600;
+      padding-top: 6px;
+    }
+
+    .step-body {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .step-text h3 {
+      font-family: var(--font-head);
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .step-text p {
+      color: var(--muted);
+      max-width: 520px;
+      font-size: 16px;
+    }
+
+    .step-arrow {
+      font-size: 28px;
+      color: var(--accent-purple);
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: all .25s;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .testimonial-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .testimonial-card:hover {
+      border-color: rgba(168, 85, 247, 0.3);
+      transform: translateY(-3px);
+    }
+
+    .site-preview {
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin-bottom: 20px;
+      position: relative;
+      height: 180px;
+      background: #111;
+      display: block;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color .2s;
+    }
+
+    .site-preview:hover {
+      border-color: rgba(168, 85, 247, 0.5);
+    }
+
+    .site-preview iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 960px;
+      height: 700px;
+      transform: scale(0.5);
+      transform-origin: top left;
+      border: none;
+      pointer-events: none;
+    }
+
+    .site-preview-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+      padding: 8px 12px;
+      font-size: 11px;
+      color: var(--muted);
+      font-family: var(--font-body);
+    }
+
+    .testimonial-card blockquote {
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--text);
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      color: var(--muted);
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .testimonial-author strong {
+      color: var(--text);
+      display: block;
+    }
+
+    .testimonial-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .t-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--accent-purple);
+      background: rgba(168, 85, 247, 0.1);
+      border: 1px solid rgba(168, 85, 247, 0.2);
+      border-radius: 100px;
+      padding: 4px 12px;
+    }
+
+    .testimonial-link {
+      color: var(--accent-blue);
+      font-size: 13px;
+      text-decoration: none;
+      transition: color .2s;
+      display: inline-block;
+    }
+
+    .testimonial-link:hover {
+      color: var(--accent-pink);
+    }
+
+    /* ── STATS ── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--bg3);
+    }
+
+    .stat-item {
+      padding: 36px 24px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+
+    .stat-item:last-child {
+      border-right: none;
+    }
+
+    .stat-num {
+      font-family: var(--font-head);
+      font-size: 36px;
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* ── SERVICES CARDS ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .service-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      transition: border-color .25s, transform .25s;
+    }
+
+    .service-card:hover {
+      border-color: rgba(168, 85, 247, 0.35);
+      transform: translateY(-4px);
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      font-family: var(--font-head);
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ── FAQs ── */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .faq-q {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-family: var(--font-head);
+      font-size: 18px;
+      font-weight: 600;
+      padding: 28px 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      transition: color .2s;
+    }
+
+    .faq-q:hover {
+      color: var(--accent-purple);
+    }
+
+    .faq-q .faq-icon {
+      font-size: 22px;
+      transition: transform .3s;
+      flex-shrink: 0;
+      color: var(--muted);
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-a {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s ease, padding .3s;
+      padding-bottom: 0;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 400px;
+      padding-bottom: 28px;
+    }
+
+    /* ── CTA SECTION ── */
+    .cta-section {
+      background: var(--bg3);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .cta-section h2 {
+      font-family: var(--font-head);
+      font-size: clamp(32px, 5vw, 64px);
+      font-weight: 800;
+      line-height: 1.1;
+      position: relative;
+      margin-bottom: 24px;
+    }
+
+    .cta-section p {
+      color: var(--muted);
+      font-size: 18px;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 64px 5% 40px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .footer-brand .logo img {
+      width: 32px;
+      border-radius: 50%;
+    }
+
+    .footer-brand .logo span {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .footer-brand p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+      max-width: 260px;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-col ul li a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 15px;
+      transition: color .2s;
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--text);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+
+      .hero h1 {
+        font-size: clamp(38px, 6vw, 64px);
+      }
+
+      section {
+        padding: 80px 5%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+
+      .step-item {
+        grid-template-columns: 48px 1fr;
+        gap: 16px;
+      }
+
+      .hero {
+        min-height: 80vh;
+        padding: 120px 5% 60px;
+      }
+
+      .site-preview iframe {
+        transform: scale(0.35);
+      }
+
+      .modal {
+        padding: 32px 24px;
+      }
+
+      section {
+        padding: 60px 5%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn-primary,
+      .btn-ghost {
+        width: 100%;
+        text-align: center;
+      }
+
+      .step-text h3 {
+        font-size: 24px;
+      }
+
+      .site-preview iframe {
+        transform: scale(0.3);
+      }
+
+      .site-preview {
+        height: 160px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<script>
-  // Apply theme instantly on load to prevent flashing
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
-</script>
+  <script>
+    // Apply theme instantly on load to prevent flashing
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+  </script>
 
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">
-    <img src="logo-Photoroom.png" alt="Darkwave Logo">
-    darkwave
-  </a>
-  <ul class="nav-links">
-    <li><a href="#">Home</a></li>
-    <li><a href="#services">How it Works</a></li>
-    <li><a href="#what-we-offer">Services</a></li>
-    <li><a href="#our-clients">Our Clients</a></li>
-    <li><a href="#faq">FAQs</a></li>
-  </ul>
-  <div style="display:flex; align-items:center; gap:16px;">
-    <button id="theme-toggle" class="btn-theme" aria-label="Toggle theme">✨</button>
-    <a href="#" class="nav-cta" onclick="openModal()">Get in Touch</a>
-  </div>
-</nav>
-
-<!-- MODAL -->
-<div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()">×</button>
-    <div id="modal-form-view">
-      <div class="modal-logo">
-        <img src="logo-Photoroom.png" alt="">
-        <span>darkwave</span>
-      </div>
-      <h2>Get in Touch</h2>
-      <p>Tell us where you're at...</p>
-      <div class="form-group">
-        <label>Company Size *</label>
-        <select>
-          <option>Less than 5</option>
-          <option>5–20</option>
-          <option>20–50</option>
-          <option>50–200</option>
-          <option>More than 200</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Monthly Marketing Budget *</label>
-        <select>
-          <option>Less than ₹6K</option>
-          <option>₹6K–₹12K</option>
-          <option>₹12K–₹50K</option>
-          <option>₹50K–₹1L</option>
-          <option>More than ₹1L</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Your Name *</label>
-        <input type="text" placeholder="Full name">
-      </div>
-      <div class="form-group">
-        <label>Phone / WhatsApp *</label>
-        <input type="text" placeholder="+91 XXXXX XXXXX">
-      </div>
-      <div class="form-group">
-        <label>Services you're interested in</label>
-        <div class="services-checkboxes">
-          <label><input type="checkbox"> SEO & Search Visibility</label>
-          <label><input type="checkbox"> Google Ads & Meta Ads</label>
-          <label><input type="checkbox"> Website Development</label>
-          <label><input type="checkbox"> Social Media Marketing</label>
-          <label><input type="checkbox"> Bulk SMS & WhatsApp Marketing</label>
-        </div>
-      </div>
-      <button class="modal-submit" onclick="submitForm()">Submit →</button>
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <img src="logo-Photoroom.png" alt="Darkwave Logo">
+      darkwave
+    </a>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#services">How it Works</a></li>
+      <li><a href="#what-we-offer">Services</a></li>
+      <li><a href="#our-clients">Our Clients</a></li>
+      <li><a href="#faq">FAQs</a></li>
+    </ul>
+    <div style="display:flex; align-items:center; gap:16px;">
+      <button id="theme-toggle" class="btn-theme" aria-label="Toggle theme">✨</button>
+      <a href="#" class="nav-cta" onclick="openModal()">Get in Touch</a>
     </div>
-    <div id="modal-success-view" class="modal-success" style="display:none">
-      <div class="check">🎯</div>
-      <h3>We've got it.</h3>
-      <p>We're aligning the right people on our end and will get back to you within 24–48 hours to explore how we can grow your business together.</p>
-    </div>
-  </div>
-</div>
+  </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-noise"></div>
-  <div class="hero-content">
-    <div class="hero-badge"><span></span> Digital Marketing Agency · Tamil Nadu</div>
-    <h1>We don't just talk<br>digital. <span class="grad">We deliver it.</span></h1>
-    <p class="hero-sub">We help Tamil Nadu businesses get found online, generate real leads, and grow — through SEO, paid ads, social media and more. Not experiments. Results.</p>
-    <div class="hero-actions">
-      <a href="#" class="btn-primary" onclick="openModal()">Get in Touch →</a>
-      <a href="#what-we-offer" class="btn-ghost">See Our Services</a>
-    </div>
-  </div>
-</section>
-
-<!-- MARQUEE -->
-<div class="marquee-section">
-  <div class="marquee-track">
-    <div class="marquee-item"><span class="marquee-dot"></span> SEO & Content</div>
-    <div class="marquee-item"><span class="marquee-dot"></span> Google Ads</div>
-    <div class="marquee-item"><span class="marquee-dot"></span> Meta Ads</div>
-    <div class="marquee-item"><span class="marquee-dot"></span> Website Development</div>
-    <div class="marquee-item"><span class="marquee-dot"></span> Social Media Marketing</div>
-    <div class="marquee-item"><span class="marquee-dot"></span> WhatsApp Marketing</div>
-    <div class="marquee-item"><span class="marquee-dot"></span> Bulk SMS</div>
-    <div class="marquee-item"><span class="marquee-dot"></span> Brand Strategy</div>
-    <!-- duplicate -->
-    <div class="marquee-item"><span class="marquee-dot"></span> SEO & Content</div>
-    <div class="marquee-item"><span class="marquee-dot"></span> Google Ads</div>
-    <div class="marquee-item"><span class="marquee-dot"></span> Meta Ads</div>
-    <div class="marquee-item"><span class="marquee-dot"></span> Website Development</div>
-    <div class="marquee-item"><span class="marquee-dot"></span> Social Media Marketing</div>
-    <div class="marquee-item"><span class="marquee-dot"></span> WhatsApp Marketing</div>
-    <div class="marquee-item"><span class="marquee-dot"></span> Bulk SMS</div>
-    <div class="marquee-item"><span class="marquee-dot"></span> Brand Strategy</div>
-  </div>
-</div>
-
-<!-- PROBLEM -->
-<section class="problem">
-  <div class="container">
-    <div class="problem-text reveal">
-      <div class="section-label">The reality</div>
-      <h2>Tamil Nadu businesses were told:<br>
-        "<span class="strike">word of mouth is enough</span>".<br>
-        "<span class="strike">digital is only for big brands</span>".<br>
-        "<span class="strike">your customers already know you</span>".
-      </h2>
-      <p class="problem-lead">And yes — that worked before. But today? People search on Google. They check AI tools. They scroll Instagram. Then they decide. <br><br>If you're not visible online, you don't exist in their decision.</p>
-      <p class="problem-reveal">That's why we built Darkwave.</p>
-    </div>
-  </div>
-</section>
-
-<!-- HOW WE WORK -->
-<section id="services" style="background: var(--bg3); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
-  <div class="container">
-    <div class="section-label reveal">How it works</div>
-    <h2 class="reveal" style="font-family: var(--font-head); font-size: clamp(28px, 4vw, 48px); font-weight: 800; margin-bottom: 16px; letter-spacing: -1px;">Our days consist of three things...</h2>
-    <p class="reveal" style="color: var(--muted); margin-bottom: 56px; font-size: 17px;">Every client engagement follows the same playbook — discover, build, grow.</p>
-
-    <div class="services-steps reveal">
-      <a href="#" class="step-item">
-        <div class="step-num">01</div>
-        <div class="step-body">
-          <div class="step-text">
-            <h3>Discover</h3>
-            <p>Every project starts with clarity. We audit your current online presence — where you're losing visibility, why competitors rank above you, and what's holding back your leads. From there, we pinpoint the highest-impact opportunities for your business.</p>
-          </div>
-          <div class="step-arrow">→</div>
-        </div>
-      </a>
-      <a href="#" class="step-item">
-        <div class="step-num">02</div>
-        <div class="step-body">
-          <div class="step-text">
-            <h3>Build & Launch</h3>
-            <p>Once we know what matters, we move fast. We build or optimise your website, launch targeted ads on Google and Meta, create content for SEO, and set up WhatsApp or SMS campaigns — all designed to work together from day one.</p>
-          </div>
-          <div class="step-arrow">→</div>
-        </div>
-      </a>
-      <a href="#" class="step-item">
-        <div class="step-num">03</div>
-        <div class="step-body">
-          <div class="step-text">
-            <h3>Grow</h3>
-            <p>Then we make it real. We monitor performance, optimise campaigns, and share clear monthly reports. We're by your side — refining, scaling, and making sure digital marketing isn't a cost. It's how your business grows.</p>
-          </div>
-          <div class="step-arrow">→</div>
-        </div>
-      </a>
-    </div>
-
-    <div style="margin-top: 48px;" class="reveal">
-      <a href="#" class="btn-primary" onclick="openModal()">Get in Touch →</a>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES GRID -->
-<section id="what-we-offer">
-  <div class="container">
-    <div class="section-label reveal">What we offer</div>
-    <h2 class="reveal" style="font-family: var(--font-head); font-size: clamp(28px, 4vw, 48px); font-weight: 800; margin-bottom: 48px; letter-spacing: -1px;">Everything your business needs<br>to win online.</h2>
-    <div class="services-grid reveal">
-      <div class="service-card">
-        <div class="service-icon">🔍</div>
-        <h3>SEO</h3>
-        <p>Rank on Google, ChatGPT and AI tools — not just one search engine. We write content and build authority so customers find you everywhere they search.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">📢</div>
-        <h3>Google & Meta Ads</h3>
-        <p>When someone searches "near me" or scrolls their feed, your business appears first. Precision-targeted campaigns that bring ready-to-buy customers.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🌐</div>
-        <h3>Website Development</h3>
-        <p>Your website is your digital shop. We build fast, mobile-first, SEO-friendly websites that turn visitors into calls, WhatsApp messages and walk-ins.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">📱</div>
-        <h3>Social Media Marketing</h3>
-        <p>Consistent presence on Instagram and Facebook that builds trust, grows your audience and keeps your brand top-of-mind for local customers.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">💬</div>
-        <h3>WhatsApp Marketing</h3>
-        <p>Reach customers where they actually respond. Verified Business API, rich media messages, chatbots and automation — all in one place.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">📲</div>
-        <h3>Bulk SMS</h3>
-        <p>Instant, high-speed SMS delivery to DND and Non-DND numbers. Real-time delivery reports and API integration with your existing systems.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section id="our-clients" style="background: var(--bg3); border-top: 1px solid var(--border);">
-  <div class="container">
-    <div class="section-label reveal">Client results</div>
-    <h2 class="reveal" style="font-family: var(--font-head); font-size: clamp(28px, 4vw, 48px); font-weight: 800; margin-bottom: 48px; letter-spacing: -1px;">Don't just take our word for it...</h2>
-    <div class="testimonials-grid reveal">
-      <div class="testimonial-card">
-        <div class="testimonial-tags">
-          <span class="t-tag">Website Development</span>
-          <span class="t-tag">SEO</span>
-        </div>
-        <blockquote>"Before Darkwave, our institute barely showed up online. They rebuilt our website from scratch and optimised it for search — now students find us first on Google, and enquiries have gone up noticeably. A team that genuinely understands education marketing."</blockquote>
-        <a class="site-preview" href="https://www.acharyaeducation-madurai.com/" target="_blank" rel="noopener">
-          <iframe src="https://www.acharyaeducation-madurai.com/" loading="lazy" sandbox="allow-same-origin" title="Acharya Education website preview"></iframe>
-          <div class="site-preview-label">acharyaeducation-madurai.com ↗</div>
-        </a>
-        <div class="testimonial-author">
-          <strong>Acharya Education (Madurai)</strong>
-        </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="testimonial-tags">
-          <span class="t-tag">Website Development</span>
-          <span class="t-tag">SEO</span>
-          <span class="t-tag">Meta Ads</span>
-        </div>
-        <blockquote>"Darkwave delivered on every front — a sleek, fast website, solid SEO groundwork, and Meta Ads that brought in the right kind of traffic from day one. It felt less like hiring an agency and more like gaining a growth partner."</blockquote>
-        <a class="site-preview" href="https://hivehaven.vercel.app/" target="_blank" rel="noopener">
-          <iframe src="https://hivehaven.vercel.app/" loading="lazy" sandbox="allow-same-origin" title="Hive Haven website preview"></iframe>
-          <div class="site-preview-label">hivehaven.vercel.app ↗</div>
-        </a>
-        <div class="testimonial-author">
-          <strong>Hive Haven (Chennai)</strong>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- FAQs -->
-<section id="faq" style="background: var(--bg3); border-top: 1px solid var(--border);">
-  <div class="container">
-    <div class="section-label reveal">FAQs</div>
-    <h2 class="reveal" style="font-family: var(--font-head); font-size: clamp(28px, 4vw, 48px); font-weight: 800; margin-bottom: 48px; letter-spacing: -1px;">You've got questions.<br>We've got answers.</h2>
-    <div class="faq-list reveal">
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          How is Darkwave different from other digital marketing agencies?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">We're results-obsessed, not tool-obsessed. We start by understanding your customers and business goals, then choose the right mix of SEO, ads, social and messaging — not the other way around. We work with businesses of all sizes, across Tamil Nadu and beyond.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          How do I know if my business is ready for digital marketing?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">If people search for the product or service you sell, you're ready. If your competitors show up on Google and you don't, you're already losing customers. We'll do a free audit and show you exactly where the gaps are.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Do you work with small businesses and startups?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">Absolutely. We have flexible, affordable plans for every stage — from solo businesses to growing SMEs. You can start with a single service and add more as you grow. No lock-in contracts for starter plans.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          How fast will I see results?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">Ads can start bringing in leads within days of launch. SEO typically shows meaningful movement within 60–90 days. We'll set clear, honest expectations based on your industry and competition before we start.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Do you provide reports and updates?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">Yes — detailed monthly reports for every service, plus real-time dashboards for SMS and ad campaigns. You'll always know exactly what's working and where your budget is going.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Can I integrate your WhatsApp or SMS services with my existing software?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">Yes. Our APIs and integrations support most major CRMs, ERPs, hospital management systems, e-commerce platforms and custom systems. We'll walk you through the setup.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-section" id="work">
-  <div class="cta-glow"></div>
-  <div class="container" style="position: relative;">
-    <div class="section-label reveal" style="justify-content: center;">Ready?</div>
-    <h2 class="reveal">Stop paying to experiment.<br><span style="background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Start paying for results.</span></h2>
-    <p class="reveal">Every business has different gaps. Some need a full system, others just one fix. Book a free strategy call — no commitment, no jargon, just clarity.</p>
-    <div class="reveal">
-      <a href="#" class="btn-primary" onclick="openModal()" style="font-size: 17px; padding: 18px 42px;">Book Free Strategy Call →</a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="logo">
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <div id="modal-form-view">
+        <div class="modal-logo">
           <img src="logo-Photoroom.png" alt="">
           <span>darkwave</span>
         </div>
-        <p>Digital marketing for Tamil Nadu businesses that want to be found, trusted, and contacted.</p>
+        <h2>Get in Touch</h2>
+        <p>Tell us where you're at...</p>
+        <div class="form-group">
+          <label>Company Size *</label>
+          <select>
+            <option>Less than 5</option>
+            <option>5–20</option>
+            <option>20–50</option>
+            <option>50–200</option>
+            <option>More than 200</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Monthly Marketing Budget *</label>
+          <select>
+            <option>Less than ₹6K</option>
+            <option>₹6K–₹12K</option>
+            <option>₹12K–₹50K</option>
+            <option>₹50K–₹1L</option>
+            <option>More than ₹1L</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Your Name *</label>
+          <input type="text" placeholder="Full name">
+        </div>
+        <div class="form-group">
+          <label>Phone / WhatsApp *</label>
+          <input type="text" placeholder="+91 XXXXX XXXXX">
+        </div>
+        <div class="form-group">
+          <label>Services you're interested in</label>
+          <div class="services-checkboxes">
+            <label><input type="checkbox"> SEO & Search Visibility</label>
+            <label><input type="checkbox"> Google Ads & Meta Ads</label>
+            <label><input type="checkbox"> Website Development</label>
+            <label><input type="checkbox"> Social Media Marketing</label>
+            <label><input type="checkbox"> Bulk SMS & WhatsApp Marketing</label>
+          </div>
+        </div>
+        <button class="modal-submit" onclick="submitForm()">Submit →</button>
       </div>
-      <div class="footer-col">
-        <h4>Services</h4>
-        <ul>
-          <li><a href="#">SEO</a></li>
-          <li><a href="#">Google Ads</a></li>
-          <li><a href="#">Meta Ads</a></li>
-          <li><a href="#">Website Dev</a></li>
-          <li><a href="#">WhatsApp & SMS</a></li>
-        </ul>
+      <div id="modal-success-view" class="modal-success" style="display:none">
+        <div class="check">🎯</div>
+        <h3>We've got it.</h3>
+        <p>We're aligning the right people on our end and will get back to you within 24–48 hours to explore how we can
+          grow your business together.</p>
       </div>
-
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="https://wa.me/+919994400311">WhatsApp Us</a></li>
-          <li><a href="tel:+919994400311">Call 9994400311</a></li>
-          <li><a href="#">Tamil Nadu, India</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div>
-        <span>© 2026 Darkwave. All rights reserved.</span>
-        <span style="display:inline-block; margin-left:12px; padding-left:12px; border-left:1px solid var(--border);">Made with ❤️ by <a href="https://akshaykumar-mu.vercel.app/#about" target="_blank" rel="noopener" style="color:var(--text); text-decoration:none; font-weight:600; transition:color .2s;" onmouseover="this.style.color='var(--accent-pink)'" onmouseout="this.style.color='var(--text)'">Mak</a></span>
-      </div>
-      <span>Privacy Policy · Terms of Use</span>
     </div>
   </div>
-</footer>
 
-<script>
-  // Theme Toggle
-  const toggleBtn = document.getElementById('theme-toggle');
-  
-  function updateThemeButton() {
-    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-    toggleBtn.textContent = isLight ? '🌙' : '☀️';
-  }
-  updateThemeButton(); // Init icon
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-noise"></div>
+    <div class="hero-content">
+      <div class="hero-badge"><span></span> Digital Marketing Agency · Tamil Nadu</div>
+      <h1>We don't just talk<br>digital. <span class="grad">We deliver it.</span></h1>
+      <p class="hero-sub">We help Tamil Nadu businesses get found online, generate real leads, and grow — through SEO,
+        paid ads, social media and more. Not experiments. Results.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn-primary" onclick="openModal()">Get in Touch →</a>
+        <a href="#what-we-offer" class="btn-ghost">See Our Services</a>
+      </div>
+    </div>
+  </section>
 
-  toggleBtn.addEventListener('click', () => {
-    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-    const newTheme = isLight ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    updateThemeButton();
-  });
+  <!-- MARQUEE -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <div class="marquee-item"><span class="marquee-dot"></span> SEO & Content</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Google Ads</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Meta Ads</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Website Development</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Social Media Marketing</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> WhatsApp Marketing</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Bulk SMS</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Brand Strategy</div>
+      <!-- duplicate -->
+      <div class="marquee-item"><span class="marquee-dot"></span> SEO & Content</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Google Ads</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Meta Ads</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Website Development</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Social Media Marketing</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> WhatsApp Marketing</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Bulk SMS</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Brand Strategy</div>
+    </div>
+  </div>
 
-  // Modal
-  function openModal() { document.getElementById('modal').classList.add('open'); }
-  function closeModal() {
-    document.getElementById('modal').classList.remove('open');
-    document.getElementById('modal-form-view').style.display = '';
-    document.getElementById('modal-success-view').style.display = 'none';
-  }
-  function closeModalOutside(e) { if (e.target === document.getElementById('modal')) closeModal(); }
-  function submitForm() {
-    // Collect form values
-    const selects = document.querySelectorAll('#modal-form-view select');
-    const inputs  = document.querySelectorAll('#modal-form-view input[type=text]');
-    const companySize = selects[0] ? selects[0].value : 'N/A';
-    const budget      = selects[1] ? selects[1].value : 'N/A';
-    const name        = inputs[0]  ? inputs[0].value.trim()  : 'N/A';
-    const phone       = inputs[1]  ? inputs[1].value.trim()  : 'N/A';
+  <!-- PROBLEM -->
+  <section class="problem">
+    <div class="container">
+      <div class="problem-text reveal">
+        <div class="section-label">The reality</div>
+        <h2>Tamil Nadu businesses were told:<br>
+          "<span class="strike">word of mouth is enough</span>".<br>
+          "<span class="strike">digital is only for big brands</span>".<br>
+          "<span class="strike">your customers already know you</span>".
+        </h2>
+        <p class="problem-lead">And yes — that worked before. But today? People search on Google. They check AI tools.
+          They scroll Instagram. Then they decide. <br><br>If you're not visible online, you don't exist in their
+          decision.</p>
+        <p class="problem-reveal">That's why we built Darkwave.</p>
+      </div>
+    </div>
+  </section>
 
-    const checked = [...document.querySelectorAll('#modal-form-view input[type=checkbox]:checked')]
-                      .map(cb => cb.parentElement.textContent.trim());
-    const services = checked.length ? checked.join(', ') : 'None selected';
+  <!-- HOW WE WORK -->
+  <section id="services"
+    style="background: var(--bg3); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <div class="section-label reveal">How it works</div>
+      <h2 class="reveal"
+        style="font-family: var(--font-head); font-size: clamp(28px, 4vw, 48px); font-weight: 800; margin-bottom: 16px; letter-spacing: -1px;">
+        Our days consist of three things...</h2>
+      <p class="reveal" style="color: var(--muted); margin-bottom: 56px; font-size: 17px;">Every client engagement
+        follows the same playbook — discover, build, grow.</p>
 
-    // Build WhatsApp message
-    const msg =
-      `*New Lead – Darkwave Website*%0A` +
-      `-----------------------------------%0A` +
-      `*Name:* ${encodeURIComponent(name)}%0A` +
-      `*Phone:* ${encodeURIComponent(phone)}%0A` +
-      `*Company Size:* ${encodeURIComponent(companySize)}%0A` +
-      `*Budget:* ${encodeURIComponent(budget)}%0A` +
-      `*Services:* ${encodeURIComponent(services)}`;
+      <div class="services-steps reveal">
+        <a href="#" class="step-item">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <div class="step-text">
+              <h3>Discover</h3>
+              <p>Every project starts with clarity. We audit your current online presence — where you're losing
+                visibility, why competitors rank above you, and what's holding back your leads. From there, we pinpoint
+                the highest-impact opportunities for your business.</p>
+            </div>
+            <div class="step-arrow">→</div>
+          </div>
+        </a>
+        <a href="#" class="step-item">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <div class="step-text">
+              <h3>Build & Launch</h3>
+              <p>Once we know what matters, we move fast. We build or optimise your website, launch targeted ads on
+                Google and Meta, create content for SEO, and set up WhatsApp or SMS campaigns — all designed to work
+                together from day one.</p>
+            </div>
+            <div class="step-arrow">→</div>
+          </div>
+        </a>
+        <a href="#" class="step-item">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <div class="step-text">
+              <h3>Grow</h3>
+              <p>Then we make it real. We monitor performance, optimise campaigns, and share clear monthly reports.
+                We're by your side — refining, scaling, and making sure digital marketing isn't a cost. It's how your
+                business grows.</p>
+            </div>
+            <div class="step-arrow">→</div>
+          </div>
+        </a>
+      </div>
 
-    // Open WhatsApp with pre-filled message
-    window.open(`https://wa.me/919994400311?text=${msg}`, '_blank');
+      <div style="margin-top: 48px;" class="reveal">
+        <a href="#" class="btn-primary" onclick="openModal()">Get in Touch →</a>
+      </div>
+    </div>
+  </section>
 
-    // Show success screen
-    document.getElementById('modal-form-view').style.display = 'none';
-    document.getElementById('modal-success-view').style.display = '';
-  }
+  <!-- SERVICES GRID -->
+  <section id="what-we-offer">
+    <div class="container">
+      <div class="section-label reveal">What we offer</div>
+      <h2 class="reveal"
+        style="font-family: var(--font-head); font-size: clamp(28px, 4vw, 48px); font-weight: 800; margin-bottom: 48px; letter-spacing: -1px;">
+        Everything your business needs<br>to win online.</h2>
+      <div class="services-grid reveal">
+        <div class="service-card">
+          <div class="service-icon">🔍</div>
+          <h3>SEO</h3>
+          <p>Rank on Google, ChatGPT and AI tools — not just one search engine. We write content and build authority so
+            customers find you everywhere they search.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📢</div>
+          <h3>Google & Meta Ads</h3>
+          <p>When someone searches "near me" or scrolls their feed, your business appears first. Precision-targeted
+            campaigns that bring ready-to-buy customers.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🌐</div>
+          <h3>Website Development</h3>
+          <p>Your website is your digital shop. We build fast, mobile-first, SEO-friendly websites that turn visitors
+            into calls, WhatsApp messages and walk-ins.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📱</div>
+          <h3>Social Media Marketing</h3>
+          <p>Consistent presence on Instagram and Facebook that builds trust, grows your audience and keeps your brand
+            top-of-mind for local customers.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">💬</div>
+          <h3>WhatsApp Marketing</h3>
+          <p>Reach customers where they actually respond. Verified Business API, rich media messages, chatbots and
+            automation — all in one place.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📲</div>
+          <h3>Bulk SMS</h3>
+          <p>Instant, high-speed SMS delivery to DND and Non-DND numbers. Real-time delivery reports and API integration
+            with your existing systems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  // FAQ
-  function toggleFaq(btn) {
-    const item = btn.parentElement;
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  }
+  <!-- TESTIMONIALS -->
+  <section id="our-clients" style="background: var(--bg3); border-top: 1px solid var(--border);">
+    <div class="container">
+      <div class="section-label reveal">Client results</div>
+      <h2 class="reveal"
+        style="font-family: var(--font-head); font-size: clamp(28px, 4vw, 48px); font-weight: 800; margin-bottom: 48px; letter-spacing: -1px;">
+        Don't just take our word for it...</h2>
+      <div class="testimonials-grid reveal">
+        <div class="testimonial-card">
+          <div class="testimonial-tags">
+            <span class="t-tag">Website Development</span>
+            <span class="t-tag">SEO</span>
+          </div>
+          <blockquote>"Before Darkwave, our institute barely showed up online. They rebuilt our website from scratch and
+            optimised it for search — now students find us first on Google, and enquiries have gone up noticeably. A
+            team that genuinely understands education marketing."</blockquote>
+          <a class="site-preview" href="https://www.acharyaeducation-madurai.com/" target="_blank" rel="noopener">
+            <iframe src="https://www.acharyaeducation-madurai.com/" loading="lazy" sandbox="allow-same-origin"
+              title="Acharya Education website preview"></iframe>
+            <div class="site-preview-label">acharyaeducation-madurai.com ↗</div>
+          </a>
+          <div class="testimonial-author">
+            <strong>Acharya Education (Madurai)</strong>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-tags">
+            <span class="t-tag">Website Development</span>
+            <span class="t-tag">SEO</span>
+            <span class="t-tag">Meta Ads</span>
+          </div>
+          <blockquote>"Darkwave delivered on every front — a sleek, fast website, solid SEO groundwork, and Meta Ads
+            that brought in the right kind of traffic from day one. It felt less like hiring an agency and more like
+            gaining a growth partner."</blockquote>
+          <a class="site-preview" href="https://hivehaven.vercel.app/" target="_blank" rel="noopener">
+            <iframe src="https://hivehaven.vercel.app/" loading="lazy" sandbox="allow-same-origin"
+              title="Hive Haven website preview"></iframe>
+            <div class="site-preview-label">hivehaven.vercel.app ↗</div>
+          </a>
+          <div class="testimonial-author">
+            <strong>Hive Haven (Chennai)</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-  }, { threshold: 0.1 });
-  reveals.forEach(r => observer.observe(r));
-</script>
+
+  <!-- FAQs -->
+  <section id="faq" style="background: var(--bg3); border-top: 1px solid var(--border);">
+    <div class="container">
+      <div class="section-label reveal">FAQs</div>
+      <h2 class="reveal"
+        style="font-family: var(--font-head); font-size: clamp(28px, 4vw, 48px); font-weight: 800; margin-bottom: 48px; letter-spacing: -1px;">
+        You've got questions.<br>We've got answers.</h2>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            How is Darkwave different from other digital marketing agencies?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">We're results-obsessed, not tool-obsessed. We start by understanding your customers and
+            business goals, then choose the right mix of SEO, ads, social and messaging — not the other way around. We
+            work with businesses of all sizes, across Tamil Nadu and beyond.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            How do I know if my business is ready for digital marketing?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">If people search for the product or service you sell, you're ready. If your competitors
+            show up on Google and you don't, you're already losing customers. We'll do a free audit and show you exactly
+            where the gaps are.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Do you work with small businesses and startups?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">Absolutely. We have flexible, affordable plans for every stage — from solo businesses to
+            growing SMEs. You can start with a single service and add more as you grow. No lock-in contracts for starter
+            plans.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            How fast will I see results?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">Ads can start bringing in leads within days of launch. SEO typically shows meaningful
+            movement within 60–90 days. We'll set clear, honest expectations based on your industry and competition
+            before we start.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Do you provide reports and updates?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">Yes — detailed monthly reports for every service, plus real-time dashboards for SMS and ad
+            campaigns. You'll always know exactly what's working and where your budget is going.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Can I integrate your WhatsApp or SMS services with my existing software?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">Yes. Our APIs and integrations support most major CRMs, ERPs, hospital management systems,
+            e-commerce platforms and custom systems. We'll walk you through the setup.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="work">
+    <div class="cta-glow"></div>
+    <div class="container" style="position: relative;">
+      <div class="section-label reveal" style="justify-content: center;">Ready?</div>
+      <h2 class="reveal">Stop paying to experiment.<br><span
+          style="background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Start
+          paying for results.</span></h2>
+      <p class="reveal">Every business has different gaps. Some need a full system, others just one fix. Book a free
+        strategy call — no commitment, no jargon, just clarity.</p>
+      <div class="reveal">
+        <a href="#" class="btn-primary" onclick="openModal()" style="font-size: 17px; padding: 18px 42px;">Book Free
+          Strategy Call →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <img src="logo-Photoroom.png" alt="">
+            <span>darkwave</span>
+          </div>
+          <p>Digital marketing for Tamil Nadu businesses that want to be found, trusted, and contacted.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">SEO</a></li>
+            <li><a href="#">Google Ads</a></li>
+            <li><a href="#">Meta Ads</a></li>
+            <li><a href="#">Website Dev</a></li>
+            <li><a href="#">WhatsApp & SMS</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="https://wa.me/+919994400311">WhatsApp Us</a></li>
+            <li><a href="tel:+919994400311">Call 9994400311</a></li>
+            <li><a href="#">Tamil Nadu, India</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>
+          <span>© 2026 Darkwave. All rights reserved.</span>
+          <span
+            style="display:inline-block; margin-left:12px; padding-left:12px; border-left:1px solid var(--border);">Made
+            with ❤️ by <a href="https://akshaykumar-mu.vercel.app/#about" target="_blank" rel="noopener"
+              style="color:var(--text); text-decoration:none; font-weight:600; transition:color .2s;"
+              onmouseover="this.style.color='var(--accent-pink)'"
+              onmouseout="this.style.color='var(--text)'">Mak</a></span>
+        </div>
+        <span>Privacy Policy · Terms of Use</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Theme Toggle
+    const toggleBtn = document.getElementById('theme-toggle');
+
+    function updateThemeButton() {
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      toggleBtn.textContent = isLight ? '🌙' : '☀️';
+    }
+    updateThemeButton(); // Init icon
+
+    toggleBtn.addEventListener('click', () => {
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      const newTheme = isLight ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeButton();
+    });
+
+    // Modal
+    function openModal() { document.getElementById('modal').classList.add('open'); }
+    function closeModal() {
+      document.getElementById('modal').classList.remove('open');
+      document.getElementById('modal-form-view').style.display = '';
+      document.getElementById('modal-success-view').style.display = 'none';
+    }
+    function closeModalOutside(e) { if (e.target === document.getElementById('modal')) closeModal(); }
+    function submitForm() {
+      // Collect form values
+      const selects = document.querySelectorAll('#modal-form-view select');
+      const inputs = document.querySelectorAll('#modal-form-view input[type=text]');
+      const companySize = selects[0] ? selects[0].value : 'N/A';
+      const budget = selects[1] ? selects[1].value : 'N/A';
+      const name = inputs[0] ? inputs[0].value.trim() : 'N/A';
+      const phone = inputs[1] ? inputs[1].value.trim() : 'N/A';
+
+      const checked = [...document.querySelectorAll('#modal-form-view input[type=checkbox]:checked')]
+        .map(cb => cb.parentElement.textContent.trim());
+      const services = checked.length ? checked.join(', ') : 'None selected';
+
+      // Build WhatsApp message
+      const msg =
+        `*New Lead – Darkwave Website*%0A` +
+        `-----------------------------------%0A` +
+        `*Name:* ${encodeURIComponent(name)}%0A` +
+        `*Phone:* ${encodeURIComponent(phone)}%0A` +
+        `*Company Size:* ${encodeURIComponent(companySize)}%0A` +
+        `*Budget:* ${encodeURIComponent(budget)}%0A` +
+        `*Services:* ${encodeURIComponent(services)}`;
+
+      // Open WhatsApp with pre-filled message
+      window.open(`https://wa.me/919994400311?text=${msg}`, '_blank');
+
+      // Show success screen
+      document.getElementById('modal-form-view').style.display = 'none';
+      document.getElementById('modal-success-view').style.display = '';
+    }
+
+    // FAQ
+    function toggleFaq(btn) {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => observer.observe(r));
+  </script>
 </body>
+
 </html>
