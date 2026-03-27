@@ -1057,7 +1057,7 @@
     }
 
     @media (max-width: 768px) {
-      .nav-links {
+      .nav-links, .nav-made-by {
         display: none;
       }
 
@@ -1150,6 +1150,11 @@
       <li><a href="#faq">FAQs</a></li>
     </ul>
     <div style="display:flex; align-items:center; gap:16px;">
+      <span class="nav-made-by" style="font-size:14px; color:var(--muted); border-right:1px solid var(--border); padding-right:16px;">Made
+        with ❤️ by <a href="https://akshaykumar-mu.vercel.app/#about" target="_blank" rel="noopener"
+          style="color:var(--text); text-decoration:none; font-weight:600; transition:color .2s;"
+          onmouseover="this.style.color='var(--accent-pink)'"
+          onmouseout="this.style.color='var(--text)'">Mak</a></span>
       <button id="theme-toggle" class="btn-theme" aria-label="Toggle theme">✨</button>
       <a href="#" class="nav-cta" onclick="openModal()">Get in Touch</a>
     </div>
