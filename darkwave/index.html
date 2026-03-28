@@ -136,6 +136,7 @@
 
     html {
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
 
     body {
@@ -145,6 +146,12 @@
       font-size: 17px;
       line-height: 1.6;
       overflow-x: hidden;
+      max-width: 100vw;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
     }
 
     /* ── NAV ── */
@@ -424,6 +431,8 @@
       padding: 100px 5% 120px;
       position: relative;
       overflow: hidden;
+      /* Prevent hero decorative bg elements from leaking */
+      contain: style layout;
     }
 
     .hero-bg {
@@ -448,6 +457,7 @@
       position: relative;
       z-index: 1;
       max-width: 900px;
+      width: 100%;
     }
 
     .hero-badge {
@@ -555,6 +565,8 @@
       background: var(--bg);
       z-index: 10;
       overflow: hidden;
+      /* Strict containment — prevents track from leaking into document layout */
+      contain: layout paint;
     }
 
     .marquee-track {
@@ -766,6 +778,10 @@
       cursor: pointer;
       text-decoration: none;
       transition: border-color .2s;
+      /* Strict containment: stops the 960px iframe from leaking into document layout */
+      contain: layout paint;
+      /* Belt-and-suspenders clip */
+      clip-path: inset(0 0 0 0);
     }
 
     .site-preview:hover {
