@@ -82,10 +82,10 @@
   <link rel="shortcut icon" href="favicon/favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
   <link rel="manifest" href="favicon/site.webmanifest">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
-    rel="stylesheet">
+  <!-- Self-hosted fonts: eliminates Google Fonts critical request chain -->
+  <link rel="preload" href="fonts/8vIH7w4qzmVxm2BL9A.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/rP2Hp2ywxg089UriCZOIHQ.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="fonts/fonts.css">
   <style>
     :root {
       --bg: #080808;
@@ -1146,6 +1146,19 @@
       section {
         padding: 80px 5%;
       }
+
+      .stats-row {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .stat-item:nth-child(3) {
+        border-right: none;
+      }
+
+      .stat-item:nth-child(4),
+      .stat-item:nth-child(5) {
+        border-top: 1px solid var(--border);
+      }
     }
 
     @media (max-width: 768px) {
@@ -1153,6 +1166,10 @@
       .nav-links,
       .nav-made-by {
         display: none;
+      }
+
+      nav {
+        padding: 14px 5%;
       }
 
       .btn-theme {
@@ -1165,12 +1182,44 @@
         height: 14px;
       }
 
+      .nav-cta {
+        padding: 9px 16px;
+        font-size: 14px;
+      }
+
       .testimonials-grid {
         grid-template-columns: 1fr;
       }
 
       .services-grid {
         grid-template-columns: 1fr;
+      }
+
+      .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+        border-radius: 16px;
+      }
+
+      .stat-item {
+        padding: 28px 16px;
+      }
+
+      .stat-item:nth-child(2) {
+        border-right: none;
+      }
+
+      .stat-item:nth-child(3),
+      .stat-item:nth-child(4),
+      .stat-item:nth-child(5) {
+        border-top: 1px solid var(--border);
+      }
+
+      .stat-item:nth-child(4) {
+        border-right: none;
+      }
+
+      .stat-num {
+        font-size: 28px;
       }
 
       .footer-grid {
@@ -1188,9 +1237,13 @@
         gap: 16px;
       }
 
+      .step-text h3 {
+        font-size: 26px;
+      }
+
       .hero {
         min-height: 80vh;
-        padding: 120px 5% 120px;
+        padding: 110px 5% 120px;
       }
 
       .site-preview iframe {
@@ -1262,8 +1315,16 @@
         text-align: center;
       }
 
+      .nav-cta {
+        display: none;
+      }
+
       .step-text h3 {
-        font-size: 24px;
+        font-size: 22px;
+      }
+
+      .step-item {
+        padding: 32px 0;
       }
 
       .site-preview iframe {
@@ -1272,6 +1333,29 @@
 
       .site-preview {
         height: 160px;
+      }
+
+      .stats-row {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stat-item:nth-child(5) {
+        grid-column: 1 / -1;
+        border-right: none;
+      }
+
+      .faq-q {
+        font-size: 16px;
+        padding: 22px 0;
+      }
+
+      .hero {
+        padding: 100px 5% 120px;
+      }
+
+      .hero-badge {
+        font-size: 12px;
+        padding: 6px 14px;
       }
     }
   </style>
@@ -1287,7 +1371,7 @@
   <!-- NAV -->
   <nav>
     <a href="#" class="nav-logo">
-      <img src="logo-Photoroom.png" alt="Darkwave Logo">
+      <img src="logo-Photoroom.png" alt="Darkwave Logo" width="38" height="38" loading="eager">
       darkwave
     </a>
     <ul class="nav-links">
@@ -1314,7 +1398,7 @@
       <button class="modal-close" onclick="closeModal()">×</button>
       <div id="modal-form-view">
         <div class="modal-logo">
-          <img src="logo-Photoroom.png" alt="">
+          <img src="logo-Photoroom.png" alt="Darkwave" width="32" height="32" loading="lazy">
           <span>darkwave</span>
         </div>
         <h2>Get in Touch</h2>
@@ -1666,7 +1750,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="logo">
-            <img src="logo-Photoroom.png" alt="">
+            <img src="logo-Photoroom.png" alt="Darkwave" width="32" height="32" loading="lazy">
             <span>darkwave</span>
           </div>
           <p>Digital marketing for Tamil Nadu businesses that want to be found, trusted, and contacted.</p>
